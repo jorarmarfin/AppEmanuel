@@ -6,20 +6,28 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { ListActividadesPageModule } from '../pages/actividades/list-actividades/list-actividades.module';
+import { ListHermanosPageModule } from '../pages/hermanos/list-hermanos/list-hermanos.module';
+import { ModalContentPage } from '../pages/hermanos/list-hermanos/list-hermanos';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    ModalContentPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    ListActividadesPageModule,
+    ListHermanosPageModule
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    ModalContentPage
   ],
   providers: [
     StatusBar,
