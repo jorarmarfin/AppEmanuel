@@ -6,33 +6,38 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ListActividadesPageModule } from '../pages/actividades/list-actividades/list-actividades.module';
-import { ListHermanosPageModule } from '../pages/hermanos/list-hermanos/list-hermanos.module';
-import { ModalContentPage } from '../pages/hermanos/list-hermanos/list-hermanos';
+import { HermanosPageModule } from '../pages/hermanos/hermanos.module';
+import { HermanoPage } from '../pages/hermanos/hermanos';
+import { ActividadesPageModule } from '../pages/actividades/actividades.module';
+import { ActividadPage } from '../pages/actividades/actividades';
+
+import { DrupalServicesProvider } from '../providers/drupal-services/drupal-services';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    ModalContentPage
+    HermanoPage,
+    ActividadPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    ListActividadesPageModule,
-    ListHermanosPageModule
-
+    HermanosPageModule,
+    ActividadesPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
-    ModalContentPage
+    HermanoPage,
+    ActividadPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    DrupalServicesProvider
   ]
 })
 export class AppModule {}

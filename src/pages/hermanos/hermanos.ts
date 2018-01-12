@@ -1,38 +1,31 @@
 import { Component } from '@angular/core';
-import { ModalController, Platform , ViewController , NavParams } from 'ionic-angular';
-
-
+import { ModalController, ViewController, NavController, NavParams } from 'ionic-angular';
 
 @Component({
-  selector: 'page-list-hermanos',
-  templateUrl: 'list-hermanos.html',
+  selector: 'page-hermanos',
+  templateUrl: 'hermanos.html',
 })
-export class ListHermanosPage {
+export class HermanosPage {
 
-  constructor(public modalCtrl: ModalController) {
+  constructor(public modalCtrl: ModalController,public navCtrl: NavController, public navParams: NavParams) {
   }
 
   openModal(characterNum) {
 
-    let modal = this.modalCtrl.create(ModalContentPage, characterNum);
+    let modal = this.modalCtrl.create(HermanoPage, characterNum);
     modal.present();
 
   }
 
 }
+
 @Component({
-  templateUrl: 'modal-content.html',
+  templateUrl: 'hermano.html',
 })
-
-export class ModalContentPage {
-  character;
-
-  constructor(
-    public platform: Platform,
-    public params: NavParams,
-    public viewCtrl: ViewController
-  ) {
-    var characters = [
+export class HermanoPage {
+	character
+  constructor(public viewCtrl: ViewController, public navParams: NavParams) {
+  	var characters = [
       {
         name: 'Gollum',
         quote: 'Sneaky little hobbitses!',
@@ -64,10 +57,10 @@ export class ModalContentPage {
         ]
       }
     ];
-    this.character = characters[this.params.get('charNum')];
+    this.character = characters[this.navParams.get('charNum')];
   }
-
   dismiss() {
     this.viewCtrl.dismiss();
   }
+
 }
